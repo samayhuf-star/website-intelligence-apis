@@ -9,6 +9,21 @@
     "templateId": "python-start",
     "categories": ["web-scraping", "seo", "developer-tools"]
   },
-  "input": "./INPUT_SCHEMA.json",
-  "dockerfile": "./Dockerfile"
+  "input": "../INPUT_SCHEMA.json",
+  "dockerfile": "./Dockerfile",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "API Results",
+      "description": "Results from the selected API",
+      "views": {
+        "overview": {
+          "title": "Results",
+          "transformation": {
+            "fields": ["success", "url", "title"]
+          }
+        }
+      }
+    }
+  }
 }
