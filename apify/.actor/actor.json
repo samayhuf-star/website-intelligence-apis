@@ -1,0 +1,14 @@
+{
+  "actorSpecification": 1,
+  "name": "website-intelligence-apis",
+  "title": "Website Intelligence APIs",
+  "description": "10 powerful website analysis tools: Convert any website to Markdown, extract metadata, detect technologies, find contacts, analyze SEO tags, parse robots.txt, discover sitemaps, check SSL certificates, and lookup DNS records.",
+  "version": "1.0.0",
+  "buildTag": "latest",
+  "meta": {
+    "templateId": "python-start",
+    "categories": ["web-scraping", "seo", "developer-tools"]
+  },
+  "input": "./INPUT_SCHEMA.json",
+  "dockerfile": "./Dockerfile"
+}

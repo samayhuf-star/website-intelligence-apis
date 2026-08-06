@@ -1,0 +1,40 @@
+{
+  "title": "Website Intelligence APIs",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "api_type": {
+      "title": "API Type",
+      "type": "string",
+      "description": "Select which website intelligence API to use",
+      "editor": "select",
+      "enum": ["website_to_markdown", "website_metadata", "technology_detector", "contact_extractor", "ai_website_summary", "opengraph_extractor", "robots_txt_parser", "sitemap_parser", "ssl_checker", "dns_lookup"],
+      "enumTitles": ["Website → Markdown", "Website Metadata", "Technology Detector", "Contact Extractor", "AI Website Summary", "OpenGraph Extractor", "Robots.txt Parser", "Sitemap Parser", "SSL Checker", "DNS Lookup"],
+      "default": "website_to_markdown"
+    },
+    "url": {
+      "title": "URL",
+      "type": "string",
+      "description": "Website URL to analyze (for website-based APIs)",
+      "editor": "textfield"
+    },
+    "domain": {
+      "title": "Domain",
+      "type": "string",
+      "description": "Domain name for SSL Checker and DNS Lookup",
+      "editor": "textfield"
+    },
+    "deep_crawl": {
+      "title": "Deep Crawl",
+      "type": "boolean",
+      "description": "Enable deep crawl of /contact and /about pages (Contact Extractor only)",
+      "default": false
+    },
+    "use_ai": {
+      "title": "Use AI Summary",
+      "type": "boolean",
+      "description": "Generate AI-powered narrative summary (requires OpenAI API key)",
+      "default": false
+    }
+  }
+}
