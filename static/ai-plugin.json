@@ -1,1 +1,30 @@
-...
+{
+  "schema_version": "v1",
+  "name_for_human": "Website Intelligence APIs",
+  "name_for_model": "website_intelligence_apis",
+  "description_for_human": "Analyze any website: extract markdown, metadata, technologies, contacts, OpenGraph data, SSL, DNS, robots.txt, sitemaps. Pay per request with Solana USDC.",
+  "description_for_model": "A comprehensive website analysis toolkit with 10 APIs. Accepts crypto payments (Solana USDC). To use: 1) POST /api/v1/payments/invoice to get a wallet address and memo. 2) Send USDC on Solana to that address with the memo. 3) POST /api/v1/payments/verify with invoice_id and tx_signature to confirm. 4) Use X-API-Key header with your API key for subsequent requests. Credits are deducted per endpoint call.",
+  "auth": {
+    "type": "service_http",
+    "authorization_type": "bearer",
+    "verification_tokens": {
+      "openai": ""
+    }
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://website-intel.apis.market/openapi.json"
+  },
+  "contact_email": "samayhuf@gmail.com",
+  "legal_info_url": "https://website-intel.apis.market/terms",
+  "logo_url": "https://website-intel.apis.market/logo.png",
+  "payment": {
+    "type": "crypto",
+    "chain": "solana",
+    "token": "USDC",
+    "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "treasury_wallet": "${TREASURY_WALLET}",
+    "pricing_model": "per_request",
+    "instructions": "Generate an invoice via POST /api/v1/payments/invoice, send USDC to the provided wallet with the memo, then verify with POST /api/v1/payments/verify. Credits auto-deduct per API call."
+  }
+}
