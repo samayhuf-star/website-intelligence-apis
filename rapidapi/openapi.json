@@ -1,17 +1,367 @@
 {
   "openapi": "3.1.0",
-  "info": {"title": "Website Intelligence APIs", "version": "1.0.0", "description": "10 powerful website analysis APIs in one bundle: Website to Markdown, Metadata, Technology Detector, Contact Extractor, AI Website Summary, OpenGraph Extractor, Robots.txt Parser, Sitemap Parser, SSL Checker, DNS Lookup"},
-  "servers": [{"url": "https://website-intelligence-apis.rapidapi.com", "description": "RapidAPI production server"}],
+  "info": {
+    "title": "Website Intelligence APIs",
+    "description": "10 powerful website analysis APIs in one bundle. Convert websites to Markdown, extract metadata, detect technologies, find contacts, generate AI summaries, parse OpenGraph tags, analyze robots.txt & sitemaps, check SSL certificates, and perform DNS lookups.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support",
+      "email": "support@websiteintel.dev"
+    },
+    "license": {
+      "name": "Proprietary — contact for commercial terms"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://167.71.22.95",
+      "description": "Production server (DigitalOcean droplet)"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
   "paths": {
-    "/health": {"get": {"tags": ["System"], "summary": "Health check", "responses": {"200": {"description": "Service is healthy"}}}},
-    "/api/v1/website-to-markdown": {"post": {"tags": ["Website to Markdown"], "summary": "Convert any web page to clean Markdown", "parameters": [{"name": "Authorization", "in": "header", "required": true, "schema": {"type": "string"}, "description": "Bearer API key"}], "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["url"], "properties": {"url": {"type": "string", "format": "uri", "example": "https://example.com"}, "proxy": {"type": "string"}}}}}}, "responses": {"200": {"description": "Markdown content"}}}},
-    "/api/v1/website-metadata": {"post": {"tags": ["Website Metadata"], "summary": "Extract comprehensive website metadata", "parameters": [{"name": "Authorization", "in": "header", "required": true, "schema": {"type": "string"}, "description": "Bearer API key"}], "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["url"], "properties": {"url": {"type": "string", "format": "uri"}, "proxy": {"type": "string"}}}}}}, "responses": {"200": {"description": "Metadata, headings, images, links, contacts"}}}},
-    "/api/v1/technology-detector": {"post": {"tags": ["Technology Detector"], "summary": "Detect CMS, frameworks, analytics, CDN", "parameters": [{"name": "Authorization", "in": "header", "required": true, "schema": {"type": "string"}, "description": "Bearer API key"}], "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["url"], "properties": {"url": {"type": "string", "format": "uri"}, "proxy": {"type": "string"}}}}}}, "responses": {"200": {"description": "Detected technologies"}}}},
-    "/api/v1/contact-extractor": {"post": {"tags": ["Contact Extractor"], "summary": "Extract emails, phones, social links, addresses", "parameters": [{"name": "Authorization", "in": "header", "required": true, "schema": {"type": "string"}, "description": "Bearer API key"}], "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["url"], "properties": {"url": {"type": "string"}, "deep_crawl": {"type": "boolean"}, "proxy": {"type": "string"}}}}}}, "responses": {"200": {"description": "Extracted contacts"}}}},
-    "/api/v1/ai-website-summary": {"post": {"tags": ["AI Website Summary"], "summary": "Generate AI-powered website summary", "parameters": [{"name": "Authorization", "in": "header", "required": true, "schema": {"type": "string"}, "description": "Bearer API key"}], "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["url"], "properties": {"url": {"type": "string"}, "use_ai": {"type": "boolean"}, "proxy": {"type": "string"}}}}}}, "responses": {"200": {"description": "Website summary"}}}},
-    "/api/v1/opengraph-extractor": {"post": {"tags": ["OpenGraph Extractor"], "summary": "Extract Open Graph and Twitter Card tags", "parameters": [{"name": "Authorization", "in": "header", "required": true, "schema": {"type": "string"}, "description": "Bearer API key"}], "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["url"], "properties": {"url": {"type": "string", "format": "uri"}, "proxy": {"type": "string"}}}}}}, "responses": {"200": {"description": "OpenGraph data with preview analysis"}}}},
-    "/api/v1/robots-txt-parser": {"post": {"tags": ["Robots.txt Parser"], "summary": "Fetch and parse robots.txt", "parameters": [{"name": "Authorization", "in": "header", "required": true, "schema": {"type": "string"}, "description": "Bearer API key"}], "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["url"], "properties": {"url": {"type": "string", "format": "uri"}, "proxy": {"type": "string"}}}}}}, "responses": {"200": {"description": "Robots.txt rules and sitemaps"}}}},
-    "/api/v1/sitemap-parser": {"post": {"tags": ["Sitemap Parser"], "summary": "Discover and parse XML sitemaps", "parameters": [{"name": "Authorization", "in": "header", "required": true, "schema": {"type": "string"}, "description": "Bearer API key"}], "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["url"], "properties": {"url": {"type": "string", "format": "uri"}, "proxy": {"type": "string"}}}}}}, "responses": {"200": {"description": "Sitemap URLs with analysis"}}}},
-    "/api/v1/ssl-checker": {"post": {"tags": ["SSL Checker"], "summary": "Check SSL certificate", "parameters": [{"name": "Authorization", "in": "header", "required": true, "schema": {"type": "string"}, "description": "Bearer API key"}], "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["domain"], "properties": {"domain": {"type": "string", "example": "example.com"}, "proxy": {"type": "string"}}}}}}, "responses": {"200": {"description": "SSL certificate details"}}}, "get": {"tags": ["SSL Checker"], "summary": "Check SSL certificate (GET)", "parameters": [{"name": "domain", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "SSL details"}}}},
-    "/api/v1/dns-lookup": {"post": {"tags": ["DNS Lookup"], "summary": "Comprehensive DNS lookup", "parameters": [{"name": "Authorization", "in": "header", "required": true, "schema": {"type": "string"}, "description": "Bearer API key"}], "requestBody": {"required": true, "content": {"application/json": {"schema": {"type": "object", "required": ["domain"], "properties": {"domain": {"type": "string"}, "proxy": {"type": "string"}}}}}}, "responses": {"200": {"description": "DNS records"}}}, "get": {"tags": ["DNS Lookup"], "summary": "DNS lookup (GET)", "parameters": [{"name": "domain", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "DNS records"}}}}}
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "operationId": "healthCheck",
+        "tags": ["System"],
+        "security": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Service health status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {"type": "string"},
+                    "service": {"type": "string"},
+                    "version": {"type": "string"},
+                    "endpoints": {"type": "integer"}
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/website-to-markdown": {
+      "post": {
+        "summary": "Convert website to Markdown",
+        "operationId": "websiteToMarkdown",
+        "tags": ["Website → Markdown"],
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/URLRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Markdown content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {"type": "boolean"},
+                    "url": {"type": "string"},
+                    "title": {"type": "string"},
+                    "word_count": {"type": "integer"},
+                    "char_count": {"type": "integer"},
+                    "markdown": {"type": "string"}
+                  }
+                }
+              }
+            }
+          },
+          "401": {"$ref": "#/components/responses/Unauthorized"},
+          "422": {"$ref": "#/components/responses/ValidationError"}
+        }
+      }
+    },
+    "/api/v1/website-metadata": {
+      "post": {
+        "summary": "Extract website metadata",
+        "operationId": "websiteMetadata",
+        "tags": ["Website Metadata"],
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/URLRequest"
+        },
+        "responses": {
+          "200": {"description": "Website metadata including meta tags, headings, images, links"},
+          "401": {"$ref": "#/components/responses/Unauthorized"},
+          "422": {"$ref": "#/components/responses/ValidationError"}
+        }
+      }
+    },
+    "/api/v1/technology-detector": {
+      "post": {
+        "summary": "Detect website technologies",
+        "operationId": "technologyDetector",
+        "tags": ["Technology Detector"],
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/URLRequest"
+        },
+        "responses": {
+          "200": {"description": "Detected technologies including CMS, frameworks, analytics, CDN"},
+          "401": {"$ref": "#/components/responses/Unauthorized"},
+          "422": {"$ref": "#/components/responses/ValidationError"}
+        }
+      }
+    },
+    "/api/v1/contact-extractor": {
+      "post": {
+        "summary": "Extract contacts from a website",
+        "operationId": "contactExtractor",
+        "tags": ["Contact Extractor"],
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Extracted contacts including emails, phones, social links, address"},
+          "401": {"$ref": "#/components/responses/Unauthorized"},
+          "422": {"$ref": "#/components/responses/ValidationError"}
+        }
+      }
+    },
+    "/api/v1/ai-website-summary": {
+      "post": {
+        "summary": "Generate AI website summary",
+        "operationId": "aiWebsiteSummary",
+        "tags": ["AI Website Summary"],
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SummaryRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "Structured and optional AI-powered website summary"},
+          "401": {"$ref": "#/components/responses/Unauthorized"},
+          "422": {"$ref": "#/components/responses/ValidationError"}
+        }
+      }
+    },
+    "/api/v1/opengraph-extractor": {
+      "post": {
+        "summary": "Extract Open Graph tags",
+        "operationId": "opengraphExtractor",
+        "tags": ["OpenGraph Extractor"],
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/URLRequest"
+        },
+        "responses": {
+          "200": {"description": "Open Graph, Twitter Card tags with preview quality analysis"},
+          "401": {"$ref": "#/components/responses/Unauthorized"},
+          "422": {"$ref": "#/components/responses/ValidationError"}
+        }
+      }
+    },
+    "/api/v1/robots-txt-parser": {
+      "post": {
+        "summary": "Parse robots.txt",
+        "operationId": "robotsTxtParser",
+        "tags": ["Robots.txt Parser"],
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/URLRequest"
+        },
+        "responses": {
+          "200": {"description": "Parsed robots.txt with rules, sitemaps, and key page access"},
+          "401": {"$ref": "#/components/responses/Unauthorized"},
+          "422": {"$ref": "#/components/responses/ValidationError"}
+        }
+      }
+    },
+    "/api/v1/sitemap-parser": {
+      "post": {
+        "summary": "Parse XML sitemaps",
+        "operationId": "sitemapParser",
+        "tags": ["Sitemap Parser"],
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/URLRequest"
+        },
+        "responses": {
+          "200": {"description": "Parsed sitemap with URL analysis, stats, and categorization"},
+          "401": {"$ref": "#/components/responses/Unauthorized"},
+          "422": {"$ref": "#/components/responses/ValidationError"}
+        }
+      }
+    },
+    "/api/v1/ssl-checker": {
+      "post": {
+        "summary": "Check SSL certificate",
+        "operationId": "sslChecker",
+        "tags": ["SSL Checker"],
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DomainRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "SSL certificate details, expiry, security grade"},
+          "401": {"$ref": "#/components/responses/Unauthorized"},
+          "422": {"$ref": "#/components/responses/ValidationError"}
+        }
+      }
+    },
+    "/api/v1/dns-lookup": {
+      "post": {
+        "summary": "DNS lookup",
+        "operationId": "dnsLookup",
+        "tags": ["DNS Lookup"],
+        "security": [{"ApiKeyAuth": []}],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DomainRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {"description": "DNS records: A, AAAA, MX, NS, CNAME, subdomains"},
+          "401": {"$ref": "#/components/responses/Unauthorized"},
+          "422": {"$ref": "#/components/responses/ValidationError"}
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "API key provided via Authorization: Bearer *** or X-API-Key header"
+      }
+    },
+    "schemas": {
+      "URLRequest": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "Website URL to analyze",
+            "example": "https://example.com"
+          },
+          "proxy": {
+            "type": "string",
+            "description": "Optional proxy URL",
+            "example": "http://user:pass@host:port"
+          }
+        }
+      },
+      "ContactRequest": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": {"type": "string", "description": "Website URL"},
+          "deep_crawl": {"type": "boolean", "description": "Deep crawl /contact and /about pages", "default": false},
+          "proxy": {"type": "string", "description": "Optional proxy URL"}
+        }
+      },
+      "SummaryRequest": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": {"type": "string", "description": "Website URL"},
+          "use_ai": {"type": "boolean", "description": "Generate AI narrative summary", "default": false},
+          "proxy": {"type": "string", "description": "Optional proxy URL"}
+        }
+      },
+      "DomainRequest": {
+        "type": "object",
+        "required": ["domain"],
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Domain name or URL",
+            "example": "example.com"
+          },
+          "proxy": {"type": "string", "description": "Optional proxy URL"}
+        }
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "Missing or invalid API key",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "detail": {"type": "string"}
+              }
+            }
+          }
+        }
+      },
+      "ValidationError": {
+        "description": "Failed to process the request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "detail": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "URLRequest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/URLRequest"
+            }
+          }
+        }
+      }
+    }
+  }
 }
