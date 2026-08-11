@@ -13,7 +13,7 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://website-intel.apis.market/openapi.json"
+    "url": "https://64.227.2.61/intel/openapi.json"
   },
   "contact_email": "samayhuf@gmail.com",
   "legal_info_url": "https://website-intel.apis.market/terms",
